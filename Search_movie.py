@@ -7,7 +7,7 @@ class Movies(object):
     GENRES = {}
 
     def __init__(self):
-        self.key = '22b40f97df8bc00c134496381488c5d8'
+        self.key = ''
         tmdb.API_KEY = self.key
 
 
