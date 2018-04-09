@@ -7,21 +7,20 @@ from Bot import Bot
 
 class Rasa_NLU(object):
 
-
-    def __init__(self):
+  def __init__(self):
         self.data_training = "./testData.json"
-        self.model_directory = "./default"
-        self.config = RasaNLUConfig("./config.json")
-
         self.Bot = Bot()
-        print('BOT: {}'.format(self.Bot.first_message()))
+        self.training_nlu()
 
 
     def training_nlu(self):
         training_data = load_data(self.data_training)
-        trainer = Trainer(self.config)
+        config = RasaNLUConfig("./config.json")
+        trainer = Trainer(config)
         trainer.train(training_data)
-        self.interpreter = Interpreter.load(trainer.persist(self.model_directory), self.config)
+        model_directory = trainer.persist("./projects")
+        builder = ComponentBuilder(use_cache=True)
+        self.interpreter = Interpreter.load(model_directory, config, builder)
 
 
     def parse_message(self, message):
@@ -37,7 +36,7 @@ class Rasa_NLU(object):
 
     def find_respond_from_bot(self, message):
         parse_mes = self.parse_message(message)
-
+        #print(parse_mes)
         if parse_mes['intent']['name'] == 'greet':
             result = self.Bot.hello_message()
             return result
@@ -55,6 +54,10 @@ class Rasa_NLU(object):
             return result
         if parse_mes['intent']['name'] == 'new_search':
             result = self.Bot.new_search()
+            return result
+
+        if parse_mes['intent']['name'] == 'thanks':
+            result = self.Bot.thanks_message()
             return result
 
         if parse_mes['intent']['name'] == 'film_search':

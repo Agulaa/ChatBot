@@ -36,12 +36,25 @@ class Bot(object):
         "bye bye",
         "CU"
     ]
+    RESP_THANKS = [
+        "no problem",
+        "you're welcome"
+    ]
     INTENTS_QUESTION = [
         'when',
         'who',
         'where'
     ]
-
+    FIRST_MESS = [
+            'Hello, what type of film do you want to see ?',
+            'Hi, what movies you want to search?',
+            'Hi, how can i help you?'
+        ]
+    HELP_MESS = [
+        "So you have to give me a genre's film which you want to see",
+        "Write a genre's film"
+    ]
+	
 
     last_film = []
     all_film = []
@@ -51,26 +64,18 @@ class Bot(object):
         self.search = Movies()
 
     def first_message(self):
-        message = [
-            'Hello, what type of film do you want to see ?',
-            'Hi, what movies you want to search?',
-            'Hi, how can i help you?'
-        ]
-        n = random.randint(0,len(message)-1)
+         def first_message(self):
+        n = random.randint(0,len(self.FIRST_MESS)-1)
         respond = {}
-        respond['respond'] = message[n]
+        respond['respond'] = self.FIRST_MESS[n]
         result_json = json.dumps(respond)
         return result_json
 
 
     def help_message(self):
-        message = [
-            "So you have to give me a genre's film which you want to see",
-            "Write a genre's film"
-        ]
-        n = random.randint(0, len(message)-1)
+       n = random.randint(0, len(self.HELP_MESS)-1)
         respond = {}
-        respond['respond'] = message[n]
+        respond['respond'] = self.HELP_MESS[n]
         result_json = json.dumps(respond)
         return result_json
 
@@ -146,5 +151,11 @@ class Bot(object):
     def aff_message(self):
         respond = {}
         respond['respond'] = random.choice(self.RESP_AFFIRM)
+        result_json = json.dumps(respond)
+        return result_json
+
+    def thanks_message(self):
+        respond = {}
+        respond['respond'] = random.choice(self.RESP_THANKS)
         result_json = json.dumps(respond)
         return result_json

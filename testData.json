@@ -32,7 +32,7 @@
         "entities": []
       },
       {
-        "text": "I am looking for a comedy film. ",
+        "text": "I am looking for a comedy film.",
         "intent": "film_search",
         "entities": [
           {
@@ -44,7 +44,7 @@
         ]
       },
       {
-        "text": "show me comedy films. ",
+        "text": "show me comedy films.",
         "intent": "film_search",
         "entities": [
           {
@@ -429,6 +429,26 @@
       {
         "text": "hot film ",
         "intent": "popular_film",
+        "entities": []
+      },
+      {
+        "text": "thank you",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "thanks",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "thx",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "cheers",
+        "intent": "thanks",
         "entities": []
       }
     ]
