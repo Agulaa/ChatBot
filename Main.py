@@ -4,7 +4,7 @@ from functools import wraps
 import json
 
 def ignore_warnings(f):
-    """Function to ignore warnings in main method"""
+    
     @wraps(f)
     def inner(*args, **kwargs):
         with warnings.catch_warnings(record=True) as w:
