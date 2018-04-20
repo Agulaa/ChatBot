@@ -64,7 +64,7 @@ class Bot(object):
         self.search = Movies()
 
     def first_message(self):
-         def first_message(self):
+
         n = random.randint(0,len(self.FIRST_MESS)-1)
         respond = {}
         respond['respond'] = self.FIRST_MESS[n]
@@ -73,7 +73,7 @@ class Bot(object):
 
 
     def help_message(self):
-       n = random.randint(0, len(self.HELP_MESS)-1)
+        n = random.randint(0, len(self.HELP_MESS)-1)
         respond = {}
         respond['respond'] = self.HELP_MESS[n]
         result_json = json.dumps(respond)
